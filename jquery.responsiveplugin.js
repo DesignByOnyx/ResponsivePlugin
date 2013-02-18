@@ -121,15 +121,15 @@
 								// Try to call the destroy method on the instance (royalSlider style)
 								instance[ destryMethodName ]();
 								self.removeData( pluginName );
-							} else {
-								// Pass the destryMethodName to the plugin (jQuery UI style)
-								// This should gracefully fail if the plugin author didn't account for it
-								self[ pluginName ]( destryMethodName );
 							}
+							
+							// Pass the destryMethodName to the plugin (jQuery UI style)
+							// This should gracefully fail if the plugin author didn't account for it
+							self[ pluginName ]( destryMethodName );
 						}
 						
 						if( typeof destryMethodName === "function" ) {
-							destryMethodName.call(this);
+							destryMethodName.call( self );
 						}
 						
 						// Unbind all events - always do this just in case destroy forgot something
@@ -189,8 +189,6 @@
 	$.fn[ registrarName ].defaults = {
 		pluginName: "",
 		breakpointOptions: {},
-		destroyMethodName: "destroy",
-		callbackBefore: null,
-		callbackAfter: null
+		destroyMethodName: "destroy"
 	};
 }(jQuery));
