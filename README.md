@@ -17,10 +17,10 @@ See if you can follow what is going on:
 (function($) {
     var breakpoints = {
 	    	MAX_WIDTH_48EM: "not screen and (min-width: 48em)",
-			MIN_WIDTH_48EM: "screen and (min-width: 48em)" 
+			MIN_WIDTH_48EM: "screen and (min-width: 48em)"
 	    },
 	    breakpointOptions = {};
-	    
+
     breakpointOptions[ breakpoints.MAX_WIDTH_48EM ] = {
     	options: {
     		selector: ".slides > li",
@@ -39,14 +39,12 @@ See if you can follow what is going on:
     		console.log("Just instantiated a flexslider for media query: " + breakpoints.MIN_WIDTH_48);
     	}
     };
-    
+
 	$('.slider').responsivePlugin({
 	    pluginName: "flexslider",
 	    breakpointOptions: breakpointOptions
 	});
 })(jQuery);
-
-enquire.listen();
 ```
 
 Yup, you got it!  A vertical slider on small screens, and a horizontal slider on larger screens.  If the user happens to cross over into a different media query, the original slider will be completely torn down, all events unbound, original DOM restored, and a new slider instantiated.
@@ -67,10 +65,6 @@ $('.some-element').responsivePlugin({
 	    }
 	}
 });
-
-// We take care of calling enquire.fire(), but you must remember to call enquire.listen().
-// You should only do this once in your application after all enquire-related stuff is done
-enquire.listen(); 
 ```
 
 ### How to use the `destroyMethodName` option
@@ -91,7 +85,7 @@ $('.some-element').responsivePlugin({
     pluginName: "flexslider",
     breakpointOptions: {
 	    "only screen and (min-width: 48em)": {
-	    	options: {},			
+	    	options: {},
 	    	callbackAfter: function() {
 	    		// this === $('.some-element')
 	    	}
@@ -109,7 +103,7 @@ $('.some-element').responsivePlugin({
 	breakpointOptions: {
 	    "only screen and (max-width: 48em)": "destroy"
 	}
-	
+
 	breakpointOptions: {
 	    "only screen and (max-width: 48em)": {
 	    	options: "destroy"
@@ -117,14 +111,14 @@ $('.some-element').responsivePlugin({
 	}
 ```
 
-- Pass "hide" to one of the breakpoints OR options to hide the entire document fragment for a particular breakpoint.  
+- Pass "hide" to one of the breakpoints OR options to hide the entire document fragment for a particular breakpoint.
 NOTE: hiding takes place **after** all events have been unbound and the original document fragment restored.
 
 ```javascript
 	breakpointOptions: {
 	    "only screen and (max-width: 48em)": "hide"
 	}
-	
+
 	breakpointOptions: {
 	    "only screen and (max-width: 48em)": {
 	    	options: "hide"
