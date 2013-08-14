@@ -180,6 +180,9 @@
 			})(breakpoint);
 		}
 
+		// Go ahead and fire enquire
+		if (enquire.fire) enquire.fire();
+
 		return self;
 	};
 
