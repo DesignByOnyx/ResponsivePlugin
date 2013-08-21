@@ -1,4 +1,4 @@
-(function($) {
+x(function($) {
 	var registrarName = "responsivePlugin",
 		cloneName = registrarName + '_clone',
 		origOn = $.fn.on,
@@ -113,23 +113,23 @@
 						}
 
 						// Attempt to call the plugin's destroy method
-						if( typeof destryMethodName === "string" ) {
+						if( typeof destroyMethodName === "string" ) {
 							// TODO: see if we need to use each()
 							instance = self.data( pluginName );
 
-							if( instance && instance[ destryMethodName ] ) {
+							if( instance && instance[ destroyMethodName ] ) {
 								// Try to call the destroy method on the instance (royalSlider style)
-								instance[ destryMethodName ]();
+								instance[ destroyMethodName ]();
 								self.removeData( pluginName );
 							}
 
-							// Pass the destryMethodName to the plugin (jQuery UI style)
+							// Pass the destroyMethodName to the plugin (jQuery UI style)
 							// This should gracefully fail if the plugin author didn't account for it
-							self[ pluginName ]( destryMethodName );
+							self[ pluginName ]( destroyMethodName );
 						}
 
-						if( typeof destryMethodName === "function" ) {
-							destryMethodName.call( self );
+						if( typeof destroyMethodName === "function" ) {
+							destroyMethodName.call( self );
 						}
 
 						// Unbind all events - always do this just in case destroy forgot something
@@ -150,7 +150,7 @@
 							self = $newSelf;
 						}
 
-						self.addClass('duplicated' + pluginName);
+						//self.addClass('duplicated' + pluginName);
 
 						if( config === "destroy" || (typeof config.options !== 'undefined' && config.options === 'destroy') ) {
 							// do nothing
