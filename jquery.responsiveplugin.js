@@ -1,4 +1,4 @@
-x(function($) {
+(function($) {
 	var registrarName = "responsivePlugin",
 		cloneName = registrarName + '_clone',
 		origOn = $.fn.on,
